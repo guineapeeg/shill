@@ -27,10 +27,19 @@ int parseInput(char*);
 int logg();
 int variableCreation(char*);
 
+int m = 1;
+
 int main(int argc, char *argv[]){
 
-  parseInput("Hello");
 
+while(m == 1){
+  parseInput("");
+  if( m != 1){
+    exit(0);
+  }
+
+}
+  
   return 0;
 }
 
@@ -147,31 +156,37 @@ int parseInput(char* tempr){
     for(int i = 0; i <= 3; i++){
         if(strcmp(wholePrompt[0], arrayOfCommands[0][0]) == 0){
             printf("Bye!");
+            m = 5;
             i = 3;
-            exit(0);
+            
         }else if(strcmp(wholePrompt[0], arrayOfCommands[0][1]) == 0){
             i = 3;
         }else if(strcmp(wholePrompt[0], arrayOfCommands[0][2]) == 0){
             printf("%s", wholePrompt[1]);
             i = 3;
-            printf("%s", asctime(timeinfo));
+            //printf("%s", wholePrompt[1]);
 
         }else if(strcmp(wholePrompt[0], arrayOfCommands[0][3]) == 0){
             
             i = 3;
         }else if(wholePrompt[0][0] == '$'){ 
 
-          for(int c = 1; c < strlen(wholePrompt[0]); c++){
-            if(wholePrompt[0][c] == '='){
-              printf("assigning a variable");
-            }
-          }
+          variableCreation(wholePrompt[0]);
 
-          variables[nVariable].name = wholePrompt[1];
-          nVariable++;
-          printf("%s", variables[nVariable-1].name);
+
+          //////////////////
+          // for(int c = 1; c < strlen(wholePrompt[0]); c++){
+          //   if(wholePrompt[0][c] == '='){
+          //     printf("assigning a variable");
+          //   }
+          // }
+
+          // variables[nVariable].name = wholePrompt[1];
+          // nVariable++;
+          // printf("%s", variables[nVariable-1].name);
           
-          i = 3;
+          // i = 3;
+          //////////////////
 
         }
         else{
@@ -189,6 +204,15 @@ int parseInput(char* tempr){
 
 int variableCreation(char* variableInfo){
 
+      // for(int c = 1; c < strlen(wholePrompt[0]); c++){
+
+      //       if(wholePrompt[0][c] == ' '){
+      //         printf("should not have any spaces");
+      //       }
+      //       else if(wholePrompt[0][c] == '='){
+      //         printf("assigning a variable");
+      //       }
+      // }
 
 
   return 0;
